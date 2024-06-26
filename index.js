@@ -1,7 +1,6 @@
 var express = require('express');
 var cors = require('cors');
 const multer = require('multer');
-const path = require('path');
 require('dotenv').config()
 
 var app = express();
@@ -19,7 +18,7 @@ const storage = multer.diskStorage({
     cb(null, 'uploads/'); // Destination folder for uploaded files
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + path.extname(file.originalname)); // File renaming logic (here, timestamp + original extension)
+    cb(null, file.originalname); // File renaming logic
   }
 });
 
